@@ -1,0 +1,9 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/beat-saber-modding-group/BSIPA-MetadataFileSchema/master/Schema.json",
+  "author": "Eris",
+  "description": "Let's you view your own height... but more precise.",
+  "gameVersion": "1.8.0",
+  "id": "MorePrecisePlayerHeight",
+  "name": "More Precise Player Height",
+  "version": "1.0.0"
+}
