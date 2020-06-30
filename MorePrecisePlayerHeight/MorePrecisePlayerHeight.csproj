@@ -36,6 +36,12 @@
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
+        <Reference Include="UnityEngine">
+            <HintPath>$(GameDirPath)Beat Saber_Data\Managed\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>$(GameDirPath)Beat Saber_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
         <Reference Include="Unity.TextMeshPro">
             <HintPath>$(GameDirPath)Beat Saber_Data\Managed\Unity.TextMeshPro.dll</HintPath>
         </Reference>
@@ -49,13 +55,20 @@
         <Reference Include="Main">
             <HintPath>$(GameDirPath)Beat Saber_Data\Managed\Main.dll</HintPath>
         </Reference>
+        <Reference Include="BSML">
+            <HintPath>$(GameDirPath)Plugins\BSML.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="HarmonyPatches\PlayerHeightSettings.cs" />
+        <Compile Include="Models\HeightUnit.cs" />
         <Compile Include="Plugin.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Settings\PluginConfig.cs" />
+        <Compile Include="Settings\SettingsController.cs" />
     </ItemGroup>
     <ItemGroup>
+      <EmbeddedResource Include="Settings\Settings.bsml" />
       <EmbeddedResource Include="manifest.json" />
       <Content Include="MorePrecisePlayerHeight.csproj.user" />
     </ItemGroup>

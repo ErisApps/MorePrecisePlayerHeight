@@ -1,0 +1,4 @@
+<scrollable-settings-container>
+    <bool-setting text='Enabled' value='enabled'/>
+    <list-setting text='Length unit' value='selectedHeightUnit' choices='heightUnitOptions'/>
+</scrollable-settings-container>
