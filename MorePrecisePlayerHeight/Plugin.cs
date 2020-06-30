@@ -13,8 +13,8 @@ namespace MorePrecisePlayerHeight
 	[Plugin(RuntimeOptions.DynamicInit)]
 	public class Plugin
 	{
-		private const string _harmonyId = "be.erisapps.morepreciseplayerheight"; 
-		
+		private const string _harmonyId = "be.erisapps.morepreciseplayerheight";
+
 		public static Harmony HarmonyInstance;
 		public static Logger Logger;
 
