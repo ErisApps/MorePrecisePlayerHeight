@@ -10,7 +10,7 @@ using Logger = IPA.Logging.Logger;
 
 namespace MorePrecisePlayerHeight
 {
-	[Plugin(RuntimeOptions.SingleStartInit)]
+	[Plugin(RuntimeOptions.DynamicInit)]
 	public class Plugin
 	{
 		private const string _harmonyId = "be.erisapps.morepreciseplayerheight"; 
