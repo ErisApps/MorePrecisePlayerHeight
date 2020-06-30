@@ -7,11 +7,11 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 	[HarmonyPatch("RefreshUI", MethodType.Normal)]
 	class PlayerHeightSettings
 	{
-		static void Postfix(ref TextMeshProUGUI ____text, ref PlayerSpecificSettings ____playerSettings)
+		static bool Prefix(ref TextMeshProUGUI ____text, ref PlayerSpecificSettings ____playerSettings)
 		{
-			Plugin.Logger.Info($"{nameof(MorePrecisePlayerHeight)} postfix called" );
+						____text.text = $"{(object) ____playerSettings.playerHeight:0.00}m";
+						return false;
 
-			____text.text = $"{(object) ____playerSettings.playerHeight:0.00}m";
 		}
 	}
 }
