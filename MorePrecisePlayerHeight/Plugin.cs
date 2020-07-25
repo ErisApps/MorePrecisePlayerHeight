@@ -5,7 +5,6 @@ using IPA;
 using IPA.Config;
 using IPA.Config.Stores;
 using MorePrecisePlayerHeight.Settings;
-using UnityEngine;
 using Logger = IPA.Logging.Logger;
 
 namespace MorePrecisePlayerHeight
@@ -18,7 +17,7 @@ namespace MorePrecisePlayerHeight
 		public static Harmony HarmonyInstance;
 		public static Logger Logger;
 
-		private SettingsController _settingsGo;
+		private SettingsController _settingsController;
 
 		[Init]
 		public void Init(Logger logger, Config config)
@@ -33,9 +32,8 @@ namespace MorePrecisePlayerHeight
 		{
 			Logger.Log(Logger.Level.Info, $"{nameof(MorePrecisePlayerHeight)} enabled");
 
-			_settingsGo = new GameObject($"[{nameof(MorePrecisePlayerHeight)} settings go instance]").AddComponent<SettingsController>();
-			Object.DontDestroyOnLoad(_settingsGo);
-			BSMLSettings.instance.AddSettingsMenu("<size=75%>More Precise\nPlayerHeight</size>", $"{nameof(MorePrecisePlayerHeight)}.{nameof(Settings)}.Settings.bsml", _settingsGo);
+			_settingsController ??= new SettingsController();
+			BSMLSettings.instance.AddSettingsMenu("<size=75%>More Precise\nPlayerHeight</size>", $"{nameof(MorePrecisePlayerHeight)}.{nameof(Settings)}.Settings.bsml", _settingsController);
 
 			HarmonyInstance = new Harmony(_harmonyId);
 			HarmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
@@ -48,8 +46,8 @@ namespace MorePrecisePlayerHeight
 
 			HarmonyInstance.UnpatchAll(_harmonyId);
 
-			BSMLSettings.instance.RemoveSettingsMenu(_settingsGo);
-			Object.DestroyImmediate(_settingsGo);
+			BSMLSettings.instance.RemoveSettingsMenu(_settingsController);
+			_settingsController = null;
 		}
 	}
 }

@@ -3,23 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using BeatSaberMarkupLanguage.Attributes;
 using MorePrecisePlayerHeight.Models;
-using UnityEngine;
 
 namespace MorePrecisePlayerHeight.Settings
 {
-	public class SettingsController : MonoBehaviour
+	public class SettingsController
 	{
-		public static SettingsController Instance;
-
-		public void Awake()
-		{
-			if (Instance == null)
-			{
-				Instance = this;
-				DontDestroyOnLoad(this);
-			}
-		}
-
 		[UIValue("enabled")]
 		public bool Enabled
 		{
