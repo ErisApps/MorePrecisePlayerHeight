@@ -14,8 +14,8 @@ namespace MorePrecisePlayerHeight
 	{
 		private const string _harmonyId = "be.erisapps.morepreciseplayerheight";
 
-		public static Harmony HarmonyInstance;
-		public static Logger Logger;
+		internal static Harmony HarmonyInstance;
+		internal static Logger Logger;
 
 		private SettingsController _settingsController;
 
