@@ -19,7 +19,7 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 				switch (PluginConfig.Instance.HeightUnit)
 				{
 					case HeightUnit.Meters:
-						____text.text = $"{(object) ____playerSettings.playerHeight:0.00}m";
+						____text.text = $"<size=80%>{(object) ____playerSettings.playerHeight:0.00}m</size>";
 						return false;
 					case HeightUnit.Feet:
 						var playerHeight = ____playerSettings.playerHeight;
@@ -27,7 +27,7 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 						var wholeFeet = (int) inchFeet;
 						var inches = Math.Round((inchFeet - wholeFeet) / 0.0833);
 
-						____text.text = $"{wholeFeet}'\n{inches:0.0}\"";
+						____text.text = $"<size=85%>{wholeFeet}'\n{inches:0.0}\"</size>";
 						return false;
 				}
 			}
