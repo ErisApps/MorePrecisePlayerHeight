@@ -12,12 +12,12 @@ namespace MorePrecisePlayerHeight
 	[Plugin(RuntimeOptions.DynamicInit)]
 	public class Plugin
 	{
-		private const string _harmonyId = "be.erisapps.morepreciseplayerheight";
-
-		internal static Harmony HarmonyInstance;
-		internal static Logger Logger;
+		private const string HarmonyId = "be.erisapps.morepreciseplayerheight";
+		private Harmony _harmonyInstance;
 
 		private SettingsController _settingsController;
+
+		internal static Logger Logger;
 
 		[Init]
 		public void Init(Logger logger, Config config)
@@ -35,8 +35,8 @@ namespace MorePrecisePlayerHeight
 			_settingsController ??= new SettingsController();
 			BSMLSettings.instance.AddSettingsMenu("<size=75%>More Precise\nPlayerHeight</size>", $"{nameof(MorePrecisePlayerHeight)}.{nameof(Settings)}.Settings.bsml", _settingsController);
 
-			HarmonyInstance = new Harmony(_harmonyId);
-			HarmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
+			_harmonyInstance = new Harmony(HarmonyId);
+			_harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
 		}
 
 		[OnDisable]
@@ -44,7 +44,7 @@ namespace MorePrecisePlayerHeight
 		{
 			Logger.Log(Logger.Level.Info, $"{nameof(MorePrecisePlayerHeight)} disabled");
 
-			HarmonyInstance.UnpatchAll(_harmonyId);
+			_harmonyInstance.UnpatchAll(HarmonyId);
 
 			BSMLSettings.instance.RemoveSettingsMenu(_settingsController);
 			_settingsController = null;

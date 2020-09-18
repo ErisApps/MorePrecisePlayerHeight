@@ -8,11 +8,13 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 {
 	[HarmonyPatch(typeof(PlayerHeightSettingsController))]
 	[HarmonyPatch("RefreshUI", MethodType.Normal)]
-	class PlayerHeightSettings
+	internal class PlayerHeightSettings
 	{
 		private const double MetersToFeetConversionFactor = 0.3048;
 
-		static bool Prefix(ref TextMeshProUGUI ____text, ref PlayerSpecificSettings ____playerSettings)
+// ReSharper disable InconsistentNaming
+		internal static bool Prefix(ref TextMeshProUGUI ____text, ref PlayerSpecificSettings ____playerSettings)
+// ReSharper restore InconsistentNaming
 		{
 			if (PluginConfig.Instance.Enabled)
 			{
