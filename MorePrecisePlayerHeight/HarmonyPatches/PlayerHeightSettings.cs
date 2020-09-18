@@ -10,7 +10,7 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 	[HarmonyPatch("RefreshUI", MethodType.Normal)]
 	internal class PlayerHeightSettings
 	{
-		private const double MetersToFeetConversionFactor = 0.3048;
+		private const double METERS_TO_FEET_CONVERSION_FACTOR = 0.3048;
 
 // ReSharper disable InconsistentNaming
 		internal static bool Prefix(ref TextMeshProUGUI ____text, ref PlayerSpecificSettings ____playerSettings)
@@ -25,7 +25,7 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 						return false;
 					case HeightUnit.Feet:
 						var playerHeight = ____playerSettings.playerHeight;
-						var inchFeet = playerHeight / MetersToFeetConversionFactor;
+						var inchFeet = playerHeight / METERS_TO_FEET_CONVERSION_FACTOR;
 						var wholeFeet = (int) inchFeet;
 						var inches = Math.Round((inchFeet - wholeFeet) / 0.0833);
 

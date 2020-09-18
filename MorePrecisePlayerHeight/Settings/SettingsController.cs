@@ -24,7 +24,5 @@ namespace MorePrecisePlayerHeight.Settings
 			get => PluginConfig.Instance.HeightUnit;
 			set => PluginConfig.Instance.HeightUnit = value;
 		}
-		
-		 
 	}
 }
