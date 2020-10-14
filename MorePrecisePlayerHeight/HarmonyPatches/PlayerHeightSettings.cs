@@ -13,7 +13,7 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 		private const double METERS_TO_FEET_CONVERSION_FACTOR = 0.3048;
 
 // ReSharper disable InconsistentNaming
-		internal static bool Prefix(ref TextMeshProUGUI ____text, ref PlayerSpecificSettings ____playerSettings)
+		internal static bool Prefix(ref TextMeshProUGUI ____text, ref float ____value)
 // ReSharper restore InconsistentNaming
 		{
 			if (PluginConfig.Instance.Enabled)
@@ -21,10 +21,10 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 				switch (PluginConfig.Instance.HeightUnit)
 				{
 					case HeightUnit.Meters:
-						____text.text = $"<size=80%>{(object) ____playerSettings.playerHeight:0.00}m</size>";
+						____text.text = $"<size=80%>{(object) ____value:0.00}m</size>";
 						return false;
 					case HeightUnit.Feet:
-						var playerHeight = ____playerSettings.playerHeight;
+						var playerHeight = ____value;
 						var inchFeet = playerHeight / METERS_TO_FEET_CONVERSION_FACTOR;
 						var wholeFeet = (int) inchFeet;
 						var inches = Math.Round((inchFeet - wholeFeet) / 0.0833);
