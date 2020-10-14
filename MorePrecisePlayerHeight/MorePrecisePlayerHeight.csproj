@@ -3,8 +3,9 @@
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
 		<OutputType>Library</OutputType>
-		<LangVersion>8</LangVersion>
+		<LangVersion>9</LangVersion>
 		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<OutDir>$(ProjectDir)bin\$(Configuration)</OutDir>
 		<ModVersion>1.1.4</ModVersion>
 		<AssemblyVersion>$(ModVersion)</AssemblyVersion>
