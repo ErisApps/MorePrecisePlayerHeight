@@ -14,8 +14,8 @@ To build this project you will need to create a `MorePrecisePlayerHeight/MorePre
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <!-- Change this path if necessary. Make sure it ends with a backslash. -->
-    <GameDirPath>D:\Program Files (x86)\Steam\steamapps\common\Beat Saber\</GameDirPath>
+    <!-- Change this path if necessary. Make sure it doesn't end with a backslash. -->
+    <BeatSaberDir>D:\Program Files (x86)\Steam\steamapps\common\Beat Saber</BeatSaberDir>
   </PropertyGroup>
 </Project>
 ```
