@@ -3,6 +3,7 @@
 	public enum HeightUnit
 	{
 		Meters,
-		Feet
+		Feet,
+		Banana
 	}
 }

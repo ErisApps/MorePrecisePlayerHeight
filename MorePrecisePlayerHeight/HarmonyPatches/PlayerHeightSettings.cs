@@ -11,6 +11,7 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 	internal class PlayerHeightSettings
 	{
 		private const double METERS_TO_FEET_CONVERSION_FACTOR = 0.3048;
+		private const double METERS_TO_BANANA_CONVERSION_FACTOR = 100d / 13;
 
 // ReSharper disable InconsistentNaming
 		internal static bool Prefix(ref TextMeshProUGUI ____text, ref float ____value)
@@ -21,7 +22,7 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 				switch (PluginConfig.Instance.HeightUnit)
 				{
 					case HeightUnit.Meters:
-						____text.text = $"<size=80%>{(object) ____value:0.00}m</size>";
+						____text.text = $"<size=80%>{____value:0.00}m</size>";
 						return false;
 					case HeightUnit.Feet:
 						var playerHeight = ____value;
@@ -30,6 +31,9 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 						var inches = Math.Round((inchFeet - wholeFeet) / 0.0833);
 
 						____text.text = $"<size=85%>{wholeFeet}'\n{inches:0.0}\"</size>";
+						return false;
+					case HeightUnit.Banana:
+						____text.text = $"<size=75%>{(____value * METERS_TO_BANANA_CONVERSION_FACTOR):0.00}\nbanana</size>";
 						return false;
 				}
 			}
