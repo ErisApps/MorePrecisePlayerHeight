@@ -7,7 +7,7 @@ using TMPro;
 namespace MorePrecisePlayerHeight.HarmonyPatches
 {
 	[HarmonyPatch(typeof(PlayerHeightSettingsController))]
-	[HarmonyPatch("RefreshUI", MethodType.Normal)]
+	[HarmonyPatch(nameof(PlayerHeightSettingsController.RefreshUI), MethodType.Normal)]
 	internal class PlayerHeightSettings
 	{
 		private const double METERS_TO_FEET_CONVERSION_FACTOR = 0.3048;
