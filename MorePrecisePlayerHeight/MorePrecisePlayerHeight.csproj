@@ -60,14 +60,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="manifest.json"/>
-		<EmbeddedResource Include="Settings\Settings.bsml"/>
+		<EmbeddedResource Include="manifest.json" />
+		<EmbeddedResource Include="Settings\Settings.bsml" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="Directory.Build.props" Condition="Exists('Directory.Build.props')"/>
-		<None Include="Directory.Build.targets" Condition="Exists('Directory.Build.targets')"/>
-		<None Include="MorePrecisePlayerHeight.csproj.user" Condition="Exists('MorePrecisePlayerHeight.csproj.user')"/>
+		<None Include="Directory.Build.props" Condition="Exists('Directory.Build.props')" />
+		<None Include="Directory.Build.targets" Condition="Exists('Directory.Build.targets')" />
+		<None Include="MorePrecisePlayerHeight.csproj.user" Condition="Exists('MorePrecisePlayerHeight.csproj.user')" />
 	</ItemGroup>
 
 	<ItemGroup>
