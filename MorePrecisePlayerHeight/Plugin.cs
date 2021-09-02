@@ -1,9 +1,9 @@
-﻿using System.Reflection;
-using BeatSaberMarkupLanguage.Settings;
+﻿using BeatSaberMarkupLanguage.Settings;
 using HarmonyLib;
 using IPA;
 using IPA.Config;
 using IPA.Config.Stores;
+using MorePrecisePlayerHeight.HarmonyPatches;
 using MorePrecisePlayerHeight.Settings;
 
 namespace MorePrecisePlayerHeight
@@ -12,6 +12,7 @@ namespace MorePrecisePlayerHeight
 	public class Plugin
 	{
 		private const string HARMONY_ID = "be.erisapps.morepreciseplayerheight";
+
 		private Harmony _harmonyInstance = null!;
 
 		private SettingsController? _settingsController;
@@ -28,14 +29,13 @@ namespace MorePrecisePlayerHeight
 			_settingsController ??= new SettingsController();
 			BSMLSettings.instance.AddSettingsMenu("<size=75%>More Precise PlayerHeight</size>", $"{nameof(MorePrecisePlayerHeight)}.{nameof(Settings)}.Settings.bsml", _settingsController);
 
-			_harmonyInstance = new Harmony(HARMONY_ID);
-			_harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
+			_harmonyInstance = Harmony.CreateAndPatchAll(typeof(PlayerHeightSettingsControllerPatch), HARMONY_ID);
 		}
 
 		[OnDisable]
 		public void OnDisable()
 		{
-			_harmonyInstance.UnpatchAll(HARMONY_ID);
+			_harmonyInstance.UnpatchSelf();
 
 			BSMLSettings.instance.RemoveSettingsMenu(_settingsController);
 			_settingsController = null!;
