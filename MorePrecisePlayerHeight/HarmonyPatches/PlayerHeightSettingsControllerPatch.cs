@@ -8,7 +8,7 @@ namespace MorePrecisePlayerHeight.HarmonyPatches
 {
 	[HarmonyPatch(typeof(PlayerHeightSettingsController))]
 	[HarmonyPatch(nameof(PlayerHeightSettingsController.RefreshUI), MethodType.Normal)]
-	internal class PlayerHeightSettings
+	internal class PlayerHeightSettingsControllerPatch
 	{
 		private const double METERS_TO_FEET_CONVERSION_FACTOR = 0.3048;
 		private const double METERS_TO_BANANA_CONVERSION_FACTOR = 100d / 13;
