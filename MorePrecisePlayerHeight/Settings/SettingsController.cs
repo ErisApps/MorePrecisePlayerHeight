@@ -6,7 +6,7 @@ using MorePrecisePlayerHeight.Models;
 
 namespace MorePrecisePlayerHeight.Settings
 {
-	public class SettingsController
+	internal class SettingsController
 	{
 		[UIValue("enabled")]
 		public bool Enabled

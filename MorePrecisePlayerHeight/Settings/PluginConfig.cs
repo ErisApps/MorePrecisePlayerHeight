@@ -1,8 +1,11 @@
-﻿using MorePrecisePlayerHeight.Models;
+﻿using System.Runtime.CompilerServices;
+using IPA.Config.Stores;
+using MorePrecisePlayerHeight.Models;
 
+[assembly: InternalsVisibleTo(GeneratedStore.AssemblyVisibilityTarget)]
 namespace MorePrecisePlayerHeight.Settings
 {
-	public class PluginConfig
+	internal class PluginConfig
 	{
 		public static PluginConfig Instance { get; set; } = null!;
 
