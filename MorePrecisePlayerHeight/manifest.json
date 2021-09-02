@@ -8,7 +8,7 @@
 	"version": "1.2.2",
 	"dependsOn": {
 		"BSIPA": "^4.2.0",
-		"BeatSaberMarkupLanguage": "^1.5.4"
+		"BeatSaberMarkupLanguage": "^1.5.5"
 	},
 	"links": {
 		"project-source": "https://github.com/ErisApps/MorePrecisePlayerHeight"
