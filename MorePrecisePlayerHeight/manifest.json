@@ -4,7 +4,7 @@
 	"name": "More Precise Player Height",
 	"description": "Let's you view your own height... but more precise.",
 	"author": "Eris",
-	"gameVersion": "1.17.0",
+	"gameVersion": "1.18.3",
 	"version": "1.2.3",
 	"dependsOn": {
 		"BSIPA": "^4.2.0",
