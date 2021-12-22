@@ -1,28 +1,35 @@
 ﻿using System;
-using HarmonyLib;
 using MorePrecisePlayerHeight.Models;
 using MorePrecisePlayerHeight.Settings;
+using SiraUtil.Affinity;
 using TMPro;
 
 namespace MorePrecisePlayerHeight.HarmonyPatches
 {
-	[HarmonyPatch(typeof(PlayerHeightSettingsController))]
-	[HarmonyPatch(nameof(PlayerHeightSettingsController.RefreshUI), MethodType.Normal)]
-	internal class PlayerHeightSettingsControllerPatch
+	internal class PlayerHeightSettingsControllerPatch : IAffinity
 	{
 		private const double METERS_TO_FEET_CONVERSION_FACTOR = 0.3048;
 		private const double METERS_TO_BANANA_CONVERSION_FACTOR = 100d / 13;
 
+		private readonly PluginConfig _config;
+
+		public PlayerHeightSettingsControllerPatch(PluginConfig config)
+		{
+			_config = config;
+		}
+
+		[AffinityPrefix]
+		[AffinityPatch(typeof(PlayerHeightSettingsController), nameof(PlayerHeightSettingsController.RefreshUI))]
 // ReSharper disable InconsistentNaming
-		internal static bool Prefix(ref TextMeshProUGUI ____text, ref float ____value)
+		internal bool Prefix(ref TextMeshProUGUI ____text, ref float ____value)
 // ReSharper restore InconsistentNaming
 		{
-			if (!PluginConfig.Instance.Enabled)
+			if (!_config.Enabled)
 			{
 				return true;
 			}
 
-			switch (PluginConfig.Instance)
+			switch (_config)
 			{
 				case { HeightUnit: HeightUnit.Meters }:
 					____text.text = $"<size=80%>{____value:0.00}m</size>";

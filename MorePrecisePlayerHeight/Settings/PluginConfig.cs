@@ -7,8 +7,6 @@ namespace MorePrecisePlayerHeight.Settings
 {
 	internal class PluginConfig
 	{
-		public static PluginConfig Instance { get; set; } = null!;
-
 		public virtual bool Enabled { get; set; } = true;
 		public virtual HeightUnit HeightUnit { get; set; } = HeightUnit.Meters;
 	}
